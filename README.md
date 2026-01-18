@@ -2,6 +2,21 @@
 
 A comprehensive collection of iOS development skills and workflows for **Claude Code**, designed to streamline iOS application development using modern technologies and best practices.
 
+## Ultimate Goal: Automated iOS App Factory
+
+**The vision:** A developer describes what they want → AI uses these skills and templates → out comes a production-ready iOS app.
+
+This repository is an **automated iOS app factory**. The end goal is fully automated iOS app generation:
+
+1. Developer says "I want a weather app with subscriptions"
+2. AI uses `ios-project-init` → scaffolds the project structure
+3. AI uses `ios-integration-setup` → adds RevenueCat, Firebase, etc.
+4. AI follows `swiftui-guidelines` → builds features correctly
+5. AI applies `swift-concurrency-expert` → ensures data-race safety
+6. **Result:** Working iOS app following modern best practices
+
+The skills are the "recipes" and packages are the "ingredients" - together they enable AI to produce consistent, high-quality iOS apps without the developer needing to know every implementation detail.
+
 ## What This Repository Does
 
 This repository provides **skills** (instruction sets) that guide Claude Code through iOS development tasks. Think of it as a complete iOS engineering toolkit that Claude can reference when helping you build apps.
@@ -19,12 +34,16 @@ This repository provides **skills** (instruction sets) that guide Claude Code th
 ```
 skills-playground/
 ├── skills/                           # Claude Code skill definitions
+│   ├── app-store-changelog/          # App Store release notes from git
+│   ├── gh-issue-fix-flow/            # GitHub issue → fix → test → ship
+│   ├── ios-debugger-agent/           # Build/run/debug on simulator
 │   ├── ios-project-init/             # Create new iOS projects
 │   ├── ios-integration-setup/        # Add 3rd party integrations
 │   ├── swift-concurrency-expert/     # Swift 6.2+ concurrency
 │   ├── swiftui-guidelines/           # SwiftUI best practices
 │   ├── swiftui-liquid-glass/         # iOS 26+ Liquid Glass API
 │   ├── swiftui-performance-audit/    # Performance optimization
+│   ├── swiftui-ui-patterns/          # SwiftUI UI patterns & components
 │   └── swiftui-view-refactor/        # View structure patterns
 ├── packages/                         # Customizable package templates
 │   ├── Network/                      # Async networking layer
@@ -110,6 +129,31 @@ Refactor views for consistent structure and patterns.
 - MV-first approach
 - View model handling (when necessary)
 
+#### 8. swiftui-ui-patterns
+Best practices and example-driven guidance for building SwiftUI views and components.
+
+- Component references for `TabView`, `NavigationStack`, sheets, lists, grids, and more
+- Scaffolding guidance for app wiring and dependency graph
+
+#### 9. app-store-changelog
+Generate user-facing App Store release notes from git history.
+
+- Collect commits and touched files since last tag (or a specified ref)
+- Convert changes into benefit-focused “What’s New” bullets
+
+#### 10. ios-debugger-agent
+Build, run, and debug iOS projects on simulators (tooling-driven workflow).
+
+- Simulator discovery + scheme setup
+- UI inspection, taps/typing/gestures, screenshots, and logs
+
+#### 11. gh-issue-fix-flow
+Resolve GitHub issues end-to-end using `gh`, local edits, builds/tests, and git.
+
+- Fetch issue context
+- Implement minimal fix + validate
+- Commit/push with closing message
+
 ## Core Package Templates
 
 These packages are **customizable starting points**, not final solutions. Modify them for your project's needs.
@@ -176,7 +220,11 @@ Building Features    → swiftui-guidelines
 Concurrency Issues   → swift-concurrency-expert
 Performance Problems → swiftui-performance-audit
 Refactoring Views    → swiftui-view-refactor
+UI Patterns          → swiftui-ui-patterns
 iOS 26+ Glass UI     → swiftui-liquid-glass
+Release Notes        → app-store-changelog
+Debugging            → ios-debugger-agent
+Issue Fixes          → gh-issue-fix-flow
 ```
 
 ## How Claude Code Uses This
@@ -234,9 +282,14 @@ Remember to customize:
 - Keep work out of view bodies
 - Narrow dependencies, stable identities
 
+## Resources
+
+- [Dimillian/Skills](https://github.com/Dimillian/Skills) — upstream skill library we’ve imported/adapted from for this factory.
+
 ## Attribution
 
 Skills structure and several skill definitions adapted from [@Dimillian's Skills repository](https://github.com/Dimillian/Skills) (2025-12-31).
+Additional skills imported and adapted from [Skills Public](https://github.com/Dimillian/Skills) (MIT licensed, 2026).
 
 ## License
 

@@ -2,6 +2,22 @@
 
 This repository contains iOS development skills and reference materials for building modern iOS applications with SwiftUI, Swift Concurrency, and latest Apple technologies.
 
+## Ultimate Goal: Automated iOS App Factory
+
+**This repository's purpose is to enable fully automated iOS app generation.**
+
+The vision: Developer describes what they want → You (Claude) use these skills and templates → Out comes a production-ready iOS app.
+
+**Example workflow:**
+1. Developer: "I want a weather app with subscriptions"
+2. You use `ios-project-init` → scaffold the project
+3. You use `ios-integration-setup` → add RevenueCat, Firebase, etc.
+4. You follow `swiftui-guidelines` → build features correctly
+5. You apply `swift-concurrency-expert` → ensure data-race safety
+6. **Result:** Working iOS app following modern best practices
+
+Skills = recipes. Packages = ingredients. Together they let you produce consistent, high-quality iOS apps.
+
 ## Repository Purpose
 
 A comprehensive skills library for iOS development workflows, designed to work like a complete iOS engineering toolkit. Each skill focuses on a specific aspect of iOS development with:
@@ -9,6 +25,10 @@ A comprehensive skills library for iOS development workflows, designed to work l
 - Best practices documentation
 - Common patterns and anti-patterns
 - Integration guidelines
+
+## Resources
+
+- [Dimillian/Skills](https://github.com/Dimillian/Skills) — upstream skills repository we’re using (and importing/adapting skills from) as part of this factory.
 
 ## Available Skills
 
@@ -272,6 +292,58 @@ init(dependency: Dependency) {
 
 ---
 
+### 8. swiftui-ui-patterns
+**Location**: `skills/swiftui-ui-patterns/SKILL.md`
+
+**Purpose**: Best practices and example-driven guidance for building SwiftUI views and components
+
+**Use When**:
+- Designing app shell structure (TabView + NavigationStack + sheets)
+- Choosing patterns for lists/grids/forms/search, etc.
+- Needing component-specific guidance and pitfalls
+
+**References**:
+- `references/components-index.md` - Component entry point
+- `references/app-wiring.md` - Root wiring and dependency graph examples
+
+---
+
+### 9. app-store-changelog
+**Location**: `skills/app-store-changelog/SKILL.md`
+
+**Purpose**: Generate user-facing App Store “What’s New” notes from git history
+
+**Use When**:
+- Preparing a release and need App Store release notes based on commits since last tag
+- You want benefit-focused bullets and filtering rules
+
+**References**:
+- `scripts/collect_release_changes.sh`
+- `references/release-notes-guidelines.md`
+
+---
+
+### 10. ios-debugger-agent
+**Location**: `skills/ios-debugger-agent/SKILL.md`
+
+**Purpose**: Build, run, and debug iOS projects on a simulator using tool-driven workflows
+
+**Use When**:
+- Running an app on simulator and inspecting UI state
+- Capturing logs, screenshots, and reproducing runtime issues
+
+---
+
+### 11. gh-issue-fix-flow
+**Location**: `skills/gh-issue-fix-flow/SKILL.md`
+
+**Purpose**: End-to-end GitHub issue resolution flow (intake → fix → validate → ship)
+
+**Use When**:
+- Taking a GitHub issue number and producing a complete fix with tests/builds + a closing commit
+
+---
+
 ## Key Philosophical Principles
 
 ### Modern SwiftUI (2025)
@@ -312,6 +384,10 @@ When working on iOS development tasks in this repository:
 5. **Fixing concurrency errors** → Apply `swift-concurrency-expert`
 6. **Performance issues** → Follow `swiftui-performance-audit` workflow
 7. **Refactoring views** → Use `swiftui-view-refactor` ordering and patterns
+8. **Choosing UI composition patterns** → Use `swiftui-ui-patterns`
+9. **Generating App Store release notes** → Use `app-store-changelog`
+10. **Debugging on simulator** → Use `ios-debugger-agent`
+11. **Fixing GitHub issues end-to-end** → Use `gh-issue-fix-flow`
 
 ### Project Creation Workflow
 
