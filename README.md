@@ -1,49 +1,242 @@
 # iOS Skills Playground
 
-A comprehensive collection of iOS development skills and workflows, designed to streamline iOS application development using modern technologies and best practices.
+A comprehensive collection of iOS development skills and workflows for **Claude Code**, designed to streamline iOS application development using modern technologies and best practices.
 
-## Overview
+## What This Repository Does
 
-This repository serves as a skills library for building iOS applications with cutting-edge UI technologies and Swift features. It's designed to work like a complete iOS engineering workflow, with individual skills that can be composed together.
+This repository provides **skills** (instruction sets) that guide Claude Code through iOS development tasks. Think of it as a complete iOS engineering toolkit that Claude can reference when helping you build apps.
 
-## Technologies
+### Key Features
 
-- **SwiftUI** - Modern declarative UI framework
-- **Liquid Glass** - Advanced UI effects and materials
-- **Swift Concurrency** - Modern async/await patterns, actors, and structured concurrency
-- **Latest Swift Features** - Using the most recent Swift language capabilities
+- **Project Initialization** - Create new iOS projects with consistent structure
+- **Package Templates** - Customizable base packages (Network, Extensions, Router)
+- **3rd Party Integrations** - Firebase, Supabase, RevenueCat, analytics, and more
+- **Development Guidelines** - SwiftUI best practices, concurrency patterns, performance optimization
+- **Code Quality** - View refactoring, architecture patterns, Liquid Glass UI
 
-## Structure
-
-The repository is organized into individual skills, each focusing on a specific aspect of iOS development:
+## Repository Structure
 
 ```
 skills-playground/
-├── skills/           # Individual skill modules
-│   ├── ui/          # UI-related skills (SwiftUI, Liquid Glass)
-│   ├── concurrency/ # Concurrency patterns and examples
-│   ├── architecture/# Architecture patterns (MVVM, Clean Architecture)
-│   └── testing/     # Testing strategies and utilities
-├── examples/        # Example projects demonstrating skills
-└── docs/           # Documentation and guides
+├── skills/                           # Claude Code skill definitions
+│   ├── ios-project-init/             # Create new iOS projects
+│   ├── ios-integration-setup/        # Add 3rd party integrations
+│   ├── swift-concurrency-expert/     # Swift 6.2+ concurrency
+│   ├── swiftui-guidelines/           # SwiftUI best practices
+│   ├── swiftui-liquid-glass/         # iOS 26+ Liquid Glass API
+│   ├── swiftui-performance-audit/    # Performance optimization
+│   └── swiftui-view-refactor/        # View structure patterns
+├── packages/                         # Customizable package templates
+│   ├── Network/                      # Async networking layer
+│   ├── Extensions/                   # Common Swift extensions
+│   └── Router/                       # Navigation management
+├── CLAUDE.md                         # Main instructions for Claude Code
+└── README.md                         # This file
 ```
 
-## Getting Started
+## Available Skills
 
-This repository is structured to support both learning and production development workflows. Each skill module includes:
+### Project Setup Skills
 
-- Implementation examples
-- Best practices documentation
-- Common patterns and anti-patterns
-- Integration guidelines
+#### 1. ios-project-init
+Create a new iOS project from scratch.
 
-## Development Workflow
+**Asks for:**
+- Project name and path
+- Bundle identifier
+- Minimum iOS version
+- Swift version
+- Core packages to include
 
-The skills in this repository are designed to be used with modern iOS development tools and can be integrated into existing projects or used as reference implementations.
+**Creates:**
+- SwiftUI App lifecycle entry point
+- Folder structure (App, Features, Resources, Localization)
+- Git repository with .gitignore
+- Optional: Network, Extensions, Router packages
 
-## Contributing
+#### 2. ios-integration-setup
+Add 3rd party integrations to your project.
 
-This is a personal skills library but contributions and suggestions are welcome.
+**Available Integrations:**
+| Category | Services |
+|----------|----------|
+| Backend | Firebase, Supabase |
+| Monetization | RevenueCat |
+| Analytics | Mixpanel, PostHog, Amplitude |
+| Images | Kingfisher |
+| Error Tracking | Sentry |
+| Push Notifications | OneSignal, FCM |
+| Feature Flags | LaunchDarkly |
+
+### Development Skills
+
+#### 3. swift-concurrency-expert
+Review and fix Swift Concurrency issues in Swift 6.2+ codebases.
+
+- Data-race safety through compile-time checks
+- `@MainActor` for UI-bound types
+- `@concurrent` attribute for background work
+- Isolated conformances for protocol safety
+
+#### 4. swiftui-guidelines
+Reference for SwiftUI state management, async patterns, and best practices.
+
+- State property wrappers (`@State`, `@Binding`, `@Observable`)
+- Async patterns with `.task` and `async/await`
+- View composition and organization
+- MV (Model-View) patterns over MVVM
+
+#### 5. swiftui-liquid-glass
+Implement iOS 26+ Liquid Glass API effects.
+
+- `.glassEffect()` modifier usage
+- `GlassEffectContainer` for multiple elements
+- Glass button styles
+- Availability checks and fallbacks
+
+#### 6. swiftui-performance-audit
+Diagnose and fix SwiftUI performance issues.
+
+- Code-first review for common smells
+- Instruments profiling guidance
+- Remediation patterns
+- Identity stability for lists
+
+#### 7. swiftui-view-refactor
+Refactor views for consistent structure and patterns.
+
+- Standard property ordering
+- Dependency injection patterns
+- MV-first approach
+- View model handling (when necessary)
+
+## Core Package Templates
+
+These packages are **customizable starting points**, not final solutions. Modify them for your project's needs.
+
+### Network
+Lightweight async networking layer.
+
+```swift
+// Customize: Add your endpoints
+enum UserEndpoint: Endpoint {
+    case getProfile
+    case updateProfile(data: ProfileUpdateRequest)
+}
+```
+
+**Contains:** Client, Endpoint protocol, Request/Response, HTTPMethod, NetworkError, SwiftUI environment key
+
+### Extensions
+Common Swift extensions.
+
+```swift
+// Customize: Add project-specific extensions
+extension Color {
+    static let appPrimary = Color("AppPrimary")
+}
+```
+
+**Contains:** Codable helpers, Dictionary utilities, String extensions, Closure type aliases
+
+### Router
+Navigation management for SwiftUI.
+
+```swift
+// Customize: Define your app's tabs
+public enum AppTab: String, CaseIterable {
+    case home, discover, settings  // Your tabs here
+}
+```
+
+**Contains:** Router class, RouteProtocol, RouteRegistry, AppTab enum, environment values
+
+## Workflow
+
+### Creating a New Project
+
+```
+1. Run ios-project-init
+   ↓
+2. Provide: name, path, bundle ID, iOS version, Swift version
+   ↓
+3. Select core packages: Network, Extensions, Router
+   ↓
+4. Customize packages for your project
+   ↓
+5. Run ios-integration-setup for 3rd party services
+   ↓
+6. Start building features
+```
+
+### Development Flow
+
+```
+Building Features    → swiftui-guidelines
+Concurrency Issues   → swift-concurrency-expert
+Performance Problems → swiftui-performance-audit
+Refactoring Views    → swiftui-view-refactor
+iOS 26+ Glass UI     → swiftui-liquid-glass
+```
+
+## How Claude Code Uses This
+
+When you work with Claude Code in this repository:
+
+1. **CLAUDE.md** is read automatically, providing context about available skills
+2. **Skill files** (SKILL.md) contain detailed workflows and instructions
+3. **Reference files** provide technical documentation and examples
+4. **Package templates** are copied to new projects when requested
+
+### Example Interaction
+
+```
+You: Create a new iOS app called WeatherApp
+
+Claude: I'll use the ios-project-init skill. I need some information:
+- Where should I create it?
+- What's the bundle identifier?
+- Minimum iOS version?
+- Do you want to include Network, Extensions, or Router packages?
+
+You: ~/Developer/apps, com.mycompany.weather, iOS 18, include all packages
+
+Claude: Creating project with Network, Extensions, and Router...
+Remember to customize:
+- Network: Add your weather API endpoints
+- Router: Change AppTab to your tabs (weather, favorites, settings)
+- Extensions: Add weather-specific helpers
+```
+
+## Technologies
+
+- **Swift 6.0+** - Latest language features and concurrency
+- **SwiftUI** - Declarative UI framework
+- **iOS 17.0+** - Minimum deployment target (configurable)
+- **Swift Package Manager** - Dependency management
+- **Xcode 16+** - Development environment
+
+## Philosophy
+
+### Modern SwiftUI (2025)
+- Views are pure state expressions
+- Services in environment, logic in services/models
+- Trust the framework (`@State`, `@Environment`, `@Observable`)
+- Composition over ViewModels
+
+### Swift Concurrency (6.2)
+- Single-threaded by default (main actor)
+- Explicit concurrency with `@concurrent`
+- Data-race safety at compile time
+
+### Performance Mindset
+- Profile early and often
+- Keep work out of view bodies
+- Narrow dependencies, stable identities
+
+## Attribution
+
+Skills structure and several skill definitions adapted from [@Dimillian's Skills repository](https://github.com/Dimillian/Skills) (2025-12-31).
 
 ## License
 

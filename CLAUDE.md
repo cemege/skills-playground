@@ -12,7 +12,69 @@ A comprehensive skills library for iOS development workflows, designed to work l
 
 ## Available Skills
 
-### 1. swift-concurrency-expert
+### 1. ios-project-init (NEW)
+**Location**: `skills/ios-project-init/SKILL.md`
+
+**Purpose**: Create a basic iOS project with SwiftUI App lifecycle
+
+**Use When**:
+- Creating a new iOS project from scratch
+- Need a clean starting point
+- Want a consistent project structure
+
+**Asks Developer For**:
+- Project name and path
+- Bundle identifier
+- Minimum iOS version (default: 17.0)
+- Swift version (default: 6.0)
+- Whether to include core packages (Network, Extensions, Router)
+
+**What It Does**:
+- Creates SwiftUI App lifecycle entry point
+- Sets up folder structure (App, Features, Resources, Localization)
+- Optionally copies core package templates
+- Initializes git repository
+- Creates .gitignore for iOS/Swift
+
+**Available Core Packages** (in `packages/`) - *Customizable Templates*:
+- **Network** - Async networking (Client, Endpoint, Request/Response) → customize endpoints, auth
+- **Extensions** - Swift extensions (Codable, String, Dictionary) → add your own
+- **Router** - Navigation management (tabs, routes, registry) → define your app's navigation
+
+**References**:
+- `references/basic-project-structure.md` - Detailed structure documentation
+
+---
+
+### 2. ios-integration-setup (NEW)
+**Location**: `skills/ios-integration-setup/SKILL.md`
+
+**Purpose**: Add 3rd party integrations to an iOS project
+
+**Use When**:
+- Adding Firebase, Supabase, or other backend services
+- Setting up RevenueCat for subscriptions
+- Integrating analytics (Mixpanel, PostHog)
+- Adding any external SDK or service
+
+**Note**: For core packages (Network, Extensions), use `ios-project-init` instead.
+
+**Available 3rd Party Integrations**:
+- **Backend**: Firebase, Supabase
+- **Monetization**: RevenueCat
+- **Analytics**: Mixpanel, PostHog, Amplitude
+- **Images**: Kingfisher
+- **Error Tracking**: Sentry
+- **Push**: OneSignal, FCM
+- **Feature Flags**: LaunchDarkly
+
+**References**:
+- `references/available-packages.md` - 3rd party integration details
+- `references/package-usage.md` - Usage examples for each integration
+
+---
+
+### 3. swift-concurrency-expert
 **Location**: `skills/swift-concurrency-expert/SKILL.md`
 
 **Purpose**: Review and fix Swift Concurrency issues in Swift 6.2+ codebases
@@ -37,7 +99,7 @@ A comprehensive skills library for iOS development workflows, designed to work l
 
 ---
 
-### 2. swiftui-guidelines
+### 4. swiftui-guidelines
 **Location**: `skills/swiftui-guidelines/SKILL.md`
 
 **Purpose**: Reference skill for SwiftUI state management, async patterns, and best practices
@@ -80,7 +142,7 @@ Task { @MainActor in await viewModel.loadData() }
 
 ---
 
-### 3. swiftui-liquid-glass
+### 5. swiftui-liquid-glass
 **Location**: `skills/swiftui-liquid-glass/SKILL.md`
 
 **Purpose**: Implement, review, or improve SwiftUI features using iOS 26+ Liquid Glass API
@@ -123,7 +185,7 @@ Button("Confirm") { }
 
 ---
 
-### 4. swiftui-performance-audit
+### 6. swiftui-performance-audit
 **Location**: `skills/swiftui-performance-audit/SKILL.md`
 
 **Purpose**: Audit and improve SwiftUI runtime performance from code review and architecture
@@ -164,7 +226,7 @@ Button("Confirm") { }
 
 ---
 
-### 5. swiftui-view-refactor
+### 7. swiftui-view-refactor
 **Location**: `skills/swiftui-view-refactor/SKILL.md`
 
 **Purpose**: Refactor SwiftUI view files for consistent structure, dependency injection, and Observation usage
@@ -243,11 +305,23 @@ init(dependency: Dependency) {
 
 When working on iOS development tasks in this repository:
 
-1. **Starting new SwiftUI features** → Reference `swiftui-guidelines`
-2. **Implementing Liquid Glass effects** → Use `swiftui-liquid-glass`
-3. **Fixing concurrency errors** → Apply `swift-concurrency-expert`
-4. **Performance issues** → Follow `swiftui-performance-audit` workflow
-5. **Refactoring views** → Use `swiftui-view-refactor` ordering and patterns
+1. **Creating a new project** → Use `ios-project-init` for minimal setup
+2. **Adding integrations** → Use `ios-integration-setup` to add packages
+3. **Starting new SwiftUI features** → Reference `swiftui-guidelines`
+4. **Implementing Liquid Glass effects** → Use `swiftui-liquid-glass`
+5. **Fixing concurrency errors** → Apply `swift-concurrency-expert`
+6. **Performance issues** → Follow `swiftui-performance-audit` workflow
+7. **Refactoring views** → Use `swiftui-view-refactor` ordering and patterns
+
+### Project Creation Workflow
+
+```
+ios-project-init → ios-integration-setup → Start building features
+```
+
+1. Create empty project with `ios-project-init`
+2. Add needed packages with `ios-integration-setup`
+3. Build features using development skills (swiftui-guidelines, etc.)
 
 ---
 
@@ -302,6 +376,12 @@ When working on iOS development tasks in this repository:
 ```
 skills-playground/
 ├── skills/
+│   ├── ios-project-init/           # Project creation
+│   │   ├── SKILL.md
+│   │   └── references/
+│   ├── ios-integration-setup/      # Package integration
+│   │   ├── SKILL.md
+│   │   └── references/
 │   ├── swift-concurrency-expert/
 │   │   ├── SKILL.md
 │   │   └── references/
@@ -317,8 +397,12 @@ skills-playground/
 │   └── swiftui-view-refactor/
 │       ├── SKILL.md
 │       └── references/
-├── examples/          # Example projects (future)
-└── docs/             # Additional documentation
+├── packages/                       # Core package templates (customizable)
+│   ├── Network/                    # Async networking layer
+│   ├── Extensions/                 # Common Swift extensions
+│   └── Router/                     # Navigation management
+├── examples/                       # Example projects (future)
+└── docs/                          # Additional documentation
 ```
 
 ---
