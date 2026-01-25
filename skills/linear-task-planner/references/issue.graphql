@@ -1,0 +1,47 @@
+query IssueDetail($issueId: String!, $includeDetails: Boolean = false) {
+  issue(id: $issueId) {
+    id
+    identifier
+    title
+    description
+    url
+    priority
+    dueDate
+    state {
+      name
+      type
+    }
+    labels {
+      nodes {
+        name
+      }
+    }
+    assignee {
+      name
+      email
+    }
+    project {
+      name
+      url
+    }
+    updatedAt
+    comments @include(if: $includeDetails) {
+      nodes {
+        id
+        body
+        user {
+          name
+        }
+        createdAt
+      }
+    }
+    attachments @include(if: $includeDetails) {
+      nodes {
+        id
+        title
+        url
+        createdAt
+      }
+    }
+  }
+}

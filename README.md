@@ -39,6 +39,7 @@ skills-playground/
 │   ├── ios-debugger-agent/           # Build/run/debug on simulator
 │   ├── ios-project-init/             # Create new iOS projects
 │   ├── ios-integration-setup/        # Add 3rd party integrations
+│   ├── linear-task-planner/          # Linear task → implementation plan
 │   ├── swift-concurrency-expert/     # Swift 6.2+ concurrency
 │   ├── swiftui-guidelines/           # SwiftUI best practices
 │   ├── swiftui-liquid-glass/         # iOS 26+ Liquid Glass API
@@ -154,6 +155,19 @@ Resolve GitHub issues end-to-end using `gh`, local edits, builds/tests, and git.
 - Implement minimal fix + validate
 - Commit/push with closing message
 
+#### 12. linear-task-planner
+Plan iOS implementation work from Linear boards, projects, or issues.
+
+- Fetch issue details (title, description, attachments, design links, comments)
+- Save workspace context for reuse
+- Output a Markdown implementation plan for developers
+- Reference SwiftUI/concurrency/performance skills in the plan
+- Support API token or MCP auth modes, based on developer preference
+- Includes auth/setup guidance for Linear access
+- Example env template: `.env.local.example`
+- Ensure `.env` / `.env.local` are gitignored
+- Invocation example: `$linear-task-planner SKI-1`
+
 ## Core Package Templates
 
 These packages are **customizable starting points**, not final solutions. Modify them for your project's needs.
@@ -225,6 +239,7 @@ iOS 26+ Glass UI     → swiftui-liquid-glass
 Release Notes        → app-store-changelog
 Debugging            → ios-debugger-agent
 Issue Fixes          → gh-issue-fix-flow
+Planning             → linear-task-planner
 ```
 
 ## How Claude Code Uses This
@@ -235,6 +250,22 @@ When you work with Claude Code in this repository:
 2. **Skill files** (SKILL.md) contain detailed workflows and instructions
 3. **Reference files** provide technical documentation and examples
 4. **Package templates** are copied to new projects when requested
+
+## Local skill mirrors
+
+To make skills available to local tools, this repo mirrors `skills/` into:
+
+- `.codex/skills/` (Codex local, source of truth)
+- `.claude/skills/` (Claude local)
+
+Docs are also mirrored:
+
+- `AGENTS.md` is the source of truth for Codex
+- `CLAUDE.md` is synced from `AGENTS.md` for Claude
+
+Use `scripts/sync_skills.sh --force` to keep `.codex/skills`, `skills/`, `.claude/skills`, and the docs in sync.
+The script prints diffs and exits unless `--force` is provided.
+These are generated via `rsync` and should not be committed.
 
 ### Example Interaction
 

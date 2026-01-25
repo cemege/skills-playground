@@ -71,5 +71,10 @@ iOSInjectionProject/
 .swiftpm/xcode/package.xcworkspace/contents.xcworkspacedata
 .netrc
 
-# Claude Code
+# CLI tools
 .claude/
+.codex/
+
+# Local env files
+.env
+.env.local

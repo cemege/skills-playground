@@ -1,0 +1,31 @@
+query ProjectDetail($projectId: String!, $first: Int = 50) {
+  project(id: $projectId) {
+    id
+    name
+    description
+    url
+    state
+    lead {
+      name
+    }
+    targetDate
+    updatedAt
+    issues(first: $first, orderBy: updatedAt) {
+      nodes {
+        id
+        identifier
+        title
+        url
+        priority
+        state {
+          name
+          type
+        }
+        assignee {
+          name
+        }
+        updatedAt
+      }
+    }
+  }
+}
